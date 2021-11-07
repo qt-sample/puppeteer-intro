@@ -1,0 +1,17 @@
+{
+    "name": "puppeteer-introduction",
+    "version": "1.0.0",
+    "author": "Timothy Quirk",
+    "description": "Node application using Puppeteer",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "headless": "node index.js",
+        "test": "node test.js",
+        "start": "node index.js --headless=false"
+    },
+    "dependencies": {
+        "dotenv": "^10.0.0",
+        "puppeteer": "^11.0.0"
+    }
+}
