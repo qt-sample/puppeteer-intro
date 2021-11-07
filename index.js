@@ -127,7 +127,15 @@ const clickStar = async ({
     }),
   ])
 
-  await page.goto('https://github.com/qt-sample/puppeteer-intro')
+  const [puppeteerIntro] = await page.$x(
+    '//a[contains(., "puppeteer-intro")]')
+  if (puppeteerIntro) {
+    await puppeteerIntro.click()
+  }
+
+  await page.waitForNavigation({
+    waitUntil: 'networkidle0'
+  })
 
   try {
     const [star] = await page.$x("//button[contains(., 'Star')]")
@@ -135,6 +143,7 @@ const clickStar = async ({
       await star.click()
     }
   } catch (error) {
+    await browser.close()
     return new Error('Requested repository already starred.')
   }
 
